@@ -30,9 +30,16 @@ public class UserView extends JFrame {
             int pin;
             String textPin = this.text.getText();
             pin = Integer.parseInt(textPin);
-            info.setText("Got it " + pin);
+            info.setText("Got it " + pin + " Waiting...");
 
-            controller.checkPin(pin);
+            boolean result = controller.checkPin(pin);
+            String resultMessage;
+            if (result) {
+                resultMessage = "Right";
+            } else {
+                resultMessage = "Wrong, tru again";
+            }
+            info.setText(resultMessage);
 
             // обработка пинкода
 //            Model model = new Model();
